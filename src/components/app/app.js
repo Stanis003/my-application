@@ -10,7 +10,8 @@ const App = () => {
     const data = [
         {label:'Going to learn Recat', important: true, id:'ghj' },
         {label:'That is good', important: false, id:'sds' },
-        {label:'I need...', important: false, id:'fdsfs' }
+        {label:'I need...', important: false, id:'fdsfs' },
+        
     ];
 
     return (
