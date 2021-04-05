@@ -12,7 +12,8 @@ export default class App extends Component {
                 {label:'That is good', important: false, like: true, id:2 },
                 {label:'I need...', important: false, like: false, id:3 }
             ],
-            term:''
+            term:'',
+            filter: 'all'
     }
     maxId = 4;
 
@@ -86,12 +87,23 @@ export default class App extends Component {
             return item.label.indexOf(term)> -1
         })
     }
+    filterPost=(items, filter)=>{
+        if(filter === 'like'){
+            return items.filter(item=>item.like)
+        } else {
+            return items
+        }
+    }
+    onFilterselect =(filter)=>{
+        this.setState({filter})
+    }
+
     render(){
-        const {data, term} = this.state;
+        const {data, term, filter} = this.state;
         const liked = data.filter(item=>item.like).length;
         const allPost = data.length;
 
-        const visiblePosts = this.serchPost(data, term);
+        const visiblePosts = this.filterPost(this.serchPost(data, term), filter);
 
         return (
             <div className="app">
@@ -101,7 +113,9 @@ export default class App extends Component {
                 <div className="search-panel d-flex">
                     <SearchPanel
                     onUpdateSearch={this.onUpdateSearch}/> 
-                    <PostStatusFilter/>   
+                    <PostStatusFilter
+                    filetr={filter}
+                    onFilterselect={this.onFilterselect}/>   
                 </div>
                 <PostList 
                     posts={visiblePosts}
