@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import './post-add-form';
 export default class PostAddForm extends Component {
 
-    state={
+    state= {
         text: ''
     }
     onValueChange=(e)=>{

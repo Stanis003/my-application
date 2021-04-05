@@ -14,7 +14,7 @@ export default class App extends Component {
             ],
             term:''
     }
-    maxId = 1;
+    maxId = 4;
 
     deleteItem=(id)=>{
         this.setState(({data})=>{
@@ -73,6 +73,10 @@ export default class App extends Component {
             }
         })
     }
+
+    onUpdateSearch =(term)=>{
+        this.setState({term})
+    }
      
     serchPost = (items, term) =>{
         if(term.length===0){
@@ -95,7 +99,8 @@ export default class App extends Component {
                 liked={liked}
                 allPost={allPost}/>
                 <div className="search-panel d-flex">
-                    <SearchPanel/> 
+                    <SearchPanel
+                    onUpdateSearch={this.onUpdateSearch}/> 
                     <PostStatusFilter/>   
                 </div>
                 <PostList 
