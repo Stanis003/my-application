@@ -111,7 +111,7 @@ export default class App extends Component {
                 <div className="search-panel d-flex">
                     <SearchPanel
                     onUpdateSearch={this.onUpdateSearch}/> 
-                    <PostStatusFilter
+                   <PostStatusFilter
                     filetr={filter}
                     onFilterselect={this.onFilterselect}/>   
                 </div>
