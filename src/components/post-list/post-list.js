@@ -7,7 +7,6 @@ const PostList =({posts, onDelete, onTogleImportant, onTogleLiked})=>{
     const elements = posts.map((item) => {
         if ('object'=== typeof item){
 
-            
         const {id, ...itemProps} = item;
         return (
             <li key={id} className="list-group-item">

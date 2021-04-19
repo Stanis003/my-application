@@ -5,6 +5,7 @@ import PostStatusFilter from '../post-status-filter';
 import PostList from '../post-list';
 import PostAddForm from '../post-add-form';
 import './app.css';
+
 export default class App extends Component {
     state = {
         data : [
@@ -23,13 +24,11 @@ export default class App extends Component {
 
             const before = data.slice(0, index);
             const after = data.slice(index + 1);
-
             const newArr = [...before, ...after];
 
             return{
                 data:newArr
             }
-
         });
     }
 
@@ -52,7 +51,7 @@ export default class App extends Component {
             const index = data.findIndex(elem => elem.id === id);
 
             const old = data[index];
-            const newItem = {...old, like:!old.important};
+            const newItem = {...old, important:!old.important};
             const newArr = [...data.slice(0, index), newItem, ...data.slice(index+1)];
 
             return{
@@ -102,7 +101,6 @@ export default class App extends Component {
         const {data, term, filter} = this.state;
         const liked = data.filter(item=>item.like).length;
         const allPost = data.length;
-
         const visiblePosts = this.filterPost(this.serchPost(data, term), filter);
 
         return (
