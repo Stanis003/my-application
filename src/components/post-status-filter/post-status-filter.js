@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './post-status-filter';
+import './post-status-filter.css';
 
 export default class PostStatusFilter extends Component {
     buttons=[
